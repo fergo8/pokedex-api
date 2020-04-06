@@ -27,7 +27,29 @@ CREATE TABLE StatusDominio
 GO
 
 ALTER TABLE StatusDominio
-ADD CONSTRAINT StatusDominio PRIMARY KEY (CodStatus);
+ADD CONSTRAINT PK_StatusDominio PRIMARY KEY (CodStatus);
+GO
+
+CREATE TABLE AtributoDominio
+(
+    CodAtributo     SMALLINT        NOT NULL,
+    NomAtributo     VARCHAR(20)     NOT NULL
+);
+GO
+
+ALTER TABLE AtributoDominio
+ADD CONSTRAINT PK_AtributoDominio PRIMARY KEY (CodAtributo);
+GO
+
+CREATE TABLE AlvoEfeitoDominio
+(
+    CodAlvoEfeito   SMALLINT        NOT NULL,
+    NomAlvoEfeito   VARCHAR(20)     NOT NULL
+);
+GO
+
+ALTER TABLE AlvoEfeitoDominio
+ADD CONSTRAINT PK_AlvoEfeitoDominio PRIMARY KEY (CodAlvoEfeito);
 GO
 
 -- Criar estrutura das entidades
