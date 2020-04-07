@@ -67,3 +67,65 @@ ALTER TABLE Pokemon
 ADD CONSTRAINT PK_Pokemon PRIMARY KEY (NumPokemon);
 GO
 
+CREATE TABLE Habilidade
+(
+    CodHabilidade   INT             NOT NULL,
+    NomHabilidade   VARCHAR(40)     NOT NULL,
+    ValDano         INT             NULL    ,
+    CodStatus       SMALLINT        NOT NULL,
+    CodTipo         SMALLINT        NOT NULL
+);
+GO
+
+ALTER TABLE Habilidade
+ADD CONSTRAINT PK_Habilidade PRIMARY KEY (CodHabilidade);
+GO
+
+CREATE TABLE Efeito
+(
+    CodEfeito       INT             NOT NULL,
+    ValBonus        INT             NULL    ,
+    ValOnus         INT             NULL    ,
+    CodAtributo     SMALLINT        NOT NULL,
+    CodAlvoEfeito   SMALLINT        NOT NULL
+);
+GO
+
+ALTER TABLE Efeito
+ADD CONSTRAINT PK_Efeito PRIMARY KEY (CodEfeito);
+GO
+
+-- Criar estrutura das tabelas de relacionamento
+CREATE TABLE PokemonHabilidade
+(
+    NumPokemon      INT             NOT NULL,
+    CodHabilidade   INT             NOT NULL
+);
+GO
+
+ALTER TABLE PokemonHabilidade
+ADD CONSTRAINT PK_PokemonHabilidade PRIMARY KEY (NumPokemon, CodHabilidade);
+GO
+
+CREATE TABLE PokemonAtributo
+(
+    NumPokemon      INT             NOT NULL,
+    CodAtributo     SMALLINT        NOT NULL,
+    ValAtributo     INT             NOT NULL
+);
+GO
+
+ALTER TABLE PokemonAtributo
+ADD CONSTRAINT PK_PokemonAtributo PRIMARY KEY (NumPokemon, CodAtributo);
+GO
+
+CREATE TABLE EfeitoHabilidade
+(
+    CodEfeito       INT             NOT NULL,
+    CodHabilidade   INT             NOT NULL
+);
+GO
+
+ALTER TABLE EfeitoHabilidade
+ADD CONSTRAINT PK_EfeitoHabilidade PRIMARY KEY (CodEfeito, CodHabilidade);
+GO
